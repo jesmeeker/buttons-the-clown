@@ -25,9 +25,14 @@ export const Requests = () => {
 
 const convertRequestToListElement = (requestObject) => {
     const clowns = getClowns()
+    var parts = requestObject.date.split('-');
+    // Please pay attention to the month (parts[1]); JavaScript counts months from 0:
+    // January - 0, February - 1, etc.
+        var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
+        console.log(mydate.toDateString());
     
     let html = `<li class="requests">
-            <div class="request__description">${requestObject.childName}'s Party on ${requestObject.date}</div>
+            <div class="request__description">${requestObject.childName}'s Party on ${mydate.toDateString()}</div>
             <button class="request__delete"
                     id="request--${requestObject.id}">
                 Deny
