@@ -13,10 +13,18 @@ mainContainer.addEventListener("click", click => {
 export const Requests = () => {
     const requests = getRequests()
 
+    
+
+    let sortedRequests = requests.sort((a, b) => {
+        let da = new Date(a.date),
+            db = new Date(b.date);
+        return da - db;
+    });
+
     let html = `
         <ul>
             ${
-                requests.map(convertRequestToListElement).join("")
+                sortedRequests.map(convertRequestToListElement).join("")
             }
         </ul>
     `
