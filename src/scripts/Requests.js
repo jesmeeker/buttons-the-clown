@@ -1,5 +1,5 @@
 import { getRequests, getClowns, saveCompletion } from "./dataAccess.js"
-// import { deleteRequest } from "./dataAccess.js"
+import { deleteRequest } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
 
