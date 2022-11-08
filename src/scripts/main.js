@@ -1,5 +1,5 @@
-import { SinkRepair } from "./SinkRepair.js"
-import { fetchRequests , fetchPlumbers, fetchCompletions } from "./dataAccess.js"
+import { ButtonsHTML } from "./ButtonsClown.js"
+import { fetchRequests , fetchClowns } from "./dataAccess.js"
 
 
 
@@ -7,11 +7,11 @@ const mainContainer = document.querySelector("#container")
 
 const render = () => {
     fetchRequests()
-        .then(() => fetchPlumbers())
+        .then(() => fetchClowns())
         // .then(() => fetchCompletions())
         .then(
             () => {
-                mainContainer.innerHTML = SinkRepair()
+                mainContainer.innerHTML = ButtonsHTML()
             }
         )
 }

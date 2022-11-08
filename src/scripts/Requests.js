@@ -1,5 +1,5 @@
-import { getRequests, getPlumbers, saveCompletion  } from "./dataAccess.js"
-import { deleteRequest } from "./dataAccess.js"
+import { getRequests, getClowns, saveCompletion } from "./dataAccess.js"
+// import { deleteRequest } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
 
@@ -24,19 +24,20 @@ export const Requests = () => {
         }
 
 const convertRequestToListElement = (requestObject) => {
-    const plumbers = getPlumbers()
+    const clowns = getClowns()
+    
     let html = `<li class="requests">
-            <div class="request__description">${requestObject.description}</div>
+            <div class="request__description">${requestObject.childName}'s Party on ${requestObject.date}</div>
             <button class="request__delete"
                     id="request--${requestObject.id}">
-                Delete
+                Deny
             </button>
-            <select class="plumbers" id="plumbers">
+            <select class="clowns" id="clowns">
             <option value="">Choose</option>
             ${
-                plumbers.map(
-                    plumber => {
-                        return `<option value="${requestObject.id}--${plumber.id}">${plumber.name}</option>`
+                clowns.map(
+                    clown => {
+                        return `<option value="${requestObject.id}--${clown.id}">${clown.name}</option>`
                     }
                 ).join("")
             }
@@ -48,8 +49,8 @@ const convertRequestToListElement = (requestObject) => {
 mainContainer.addEventListener(
     "change",
     (event) => {
-        if (event.target.id === "plumbers") {
-            const [requestId, plumberId] = event.target.value.split("--")
+        if (event.target.id === "clowns") {
+            const [requestId, clownId] = event.target.value.split("--")
             
             
             var d = new Date();
@@ -65,7 +66,7 @@ mainContainer.addEventListener(
             */
             const completion = {
                 requestId: (parseInt(requestId)),
-                plumberId: (parseInt(plumberId)),
+                clownId: (parseInt(clownId)),
                 date_created: date
                 }
 

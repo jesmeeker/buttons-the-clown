@@ -52,18 +52,18 @@ export const deleteRequest = (id) => {
         )
 }
 
-export const fetchPlumbers = () => {
-    return fetch(`${API}/plumbers`)
+export const fetchClowns = () => {
+    return fetch(`${API}/clowns`)
         .then(response => response.json())
         .then(
             (data) => {
-                applicationState.plumbers = data
+                applicationState.clowns = data
             }
         )
 }
 
-// Create two functions in your dataAccess module.
-// This will perform the POST request to save the completion object to the API
+// // Create two functions in your dataAccess module.
+// // This will perform the POST request to save the completion object to the API
 
 export const saveCompletion = (completionObject) => {
     const fetchOptions = {
@@ -83,13 +83,13 @@ export const saveCompletion = (completionObject) => {
     
 
 
-// - This will retrieve all completion objects from the API
+// // - This will retrieve all completion objects from the API
 
 export const fetchCompletions = () => {
     fetch(`${API}/completions`)
     .then(response => response.json())
     .then((data) => {
-        applicationState.plumbers = data
+        applicationState.clowns = data
     }
     )
     // mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
@@ -97,14 +97,14 @@ export const fetchCompletions = () => {
 
 
 
-// Define and export a function named getRequests that returns a copy of the requests state.
+// // Define and export a function named getRequests that returns a copy of the requests state.
 
 export const getRequests = () => {
     return applicationState.requests.map(requests => ({...requests}))
 }
 
-export const getPlumbers = () => {
-    return applicationState.plumbers.map(plumbers => ({...plumbers}))
+export const getClowns = () => {
+    return applicationState.clowns.map(clowns => ({...clowns}))
 }
 
 // export const getCompletions = () => {
