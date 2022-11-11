@@ -9,7 +9,32 @@
       "name": "Lollipop"
     }
   ],
-  "completions": [],
+  "completions": [
+    {
+      "requestId": 4,
+      "clownId": 1,
+      "date_created": "11-101-2022 ",
+      "id": 1
+    },
+    {
+      "requestId": 4,
+      "clownId": 2,
+      "date_created": "11-101-2022 ",
+      "id": 2
+    },
+    {
+      "requestId": 5,
+      "clownId": 2,
+      "date_created": "11-101-2022 ",
+      "id": 3
+    },
+    {
+      "requestId": 5,
+      "clownId": 1,
+      "date_created": "11-101-2022 ",
+      "id": 4
+    }
+  ],
   "requests": [
     {
       "parentName": "Justin Meeker",
@@ -18,7 +43,8 @@
       "address": "789 Your Mom's House",
       "date": "2023-06-30",
       "lengthHours": "3",
-      "id": 2
+      "id": 2,
+      "complete": true
     },
     {
       "parentName": "jessssssssssssssssssss",
@@ -27,7 +53,8 @@
       "address": "609 yongbutt ct",
       "date": "2022-12-25",
       "lengthHours": "800",
-      "id": 3
+      "id": 3,
+      "complete": false
     },
     {
       "parentName": "Jessica Meeker",
@@ -36,7 +63,18 @@
       "address": "709890 Your dad's house",
       "date": "2022-11-25",
       "lengthHours": "2",
-      "id": 4
+      "id": 4,
+      "complete": false
+    },
+    {
+      "parentName": "Your Mom",
+      "childName": "My Kid",
+      "attendees": "2",
+      "address": "389024 Party Place",
+      "date": "2023-08-14",
+      "lengthHours": "2",
+      "complete": true,
+      "id": 5
     }
   ]
 }

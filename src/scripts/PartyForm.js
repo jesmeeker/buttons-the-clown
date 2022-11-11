@@ -21,6 +21,7 @@ mainContainer.addEventListener("click", clickEvent => {
             address: userAddress,
             date: userDate,
             lengthHours: hours,
+            complete: false
         }
 
         // Send the data to the API for permanent storage

@@ -1,4 +1,4 @@
-import { getRequests, getClowns, saveCompletion } from "./dataAccess.js"
+import { getRequests, getClowns, saveCompletion , updateRequest } from "./dataAccess.js"
 import { deleteRequest } from "./dataAccess.js"
 
 const mainContainer = document.querySelector("#container")
@@ -21,15 +21,11 @@ export const Requests = () => {
         return da - db;
     });
 
-    let html = `
-        <ul>
-            ${
-                sortedRequests.map(convertRequestToListElement).join("")
-            }
-        </ul>
-    `
+    let html = `<ul>
+                    ${sortedRequests.sort(function(a,b){return a.complete-b.complete}).map(convertRequestToListElement).join("")}
+                </ul>`
     return html
-        }
+}
 
 const convertRequestToListElement = (requestObject) => {
     const clowns = getClowns()
@@ -38,8 +34,11 @@ const convertRequestToListElement = (requestObject) => {
     // January - 0, February - 1, etc.
         var mydate = new Date(parts[0], parts[1] - 1, parts[2]); 
         console.log(mydate.toDateString());
-    
-    let html = `<li class="requests">
+
+        let html = ""
+
+        if (requestObject.complete === false) {
+            html += `<li class="requests">
             <div class="request__description">${requestObject.childName}'s Party on ${mydate.toDateString()}</div>
             <button class="request__delete"
                     id="request--${requestObject.id}">
@@ -47,17 +46,27 @@ const convertRequestToListElement = (requestObject) => {
             </button>
             <select class="clowns" id="clowns">
             <option value="">Choose</option>
-            ${
-                clowns.map(
-                    clown => {
-                        return `<option value="${requestObject.id}--${clown.id}">${clown.name}</option>`
-                    }
-                ).join("")
-            }
-        </select>
-        </li>`
-    return html
+                ${
+                    clowns.map(
+                        clown => {
+                            return `<option value="${requestObject.id}--${clown.id}">${clown.name}</option>`
+                        }
+                    ).join("")
+                }
+            </select>
+            </li>`
+        } else {
+            html += `<li class="requests__completed">
+            <div class="request__description">${requestObject.childName}'s Party on ${mydate.toDateString()}</div>
+            <button class="request__delete"
+                    id="request--${requestObject.id}">
+                Deny
+            </button>
+                    </li>`
+                } 
+            return html
 }
+    
 
 mainContainer.addEventListener(
     "change",
@@ -92,3 +101,16 @@ mainContainer.addEventListener(
         }
     }
 )
+
+mainContainer.addEventListener(
+    "change",
+    (event) => {
+        if (event.target.id === "clowns"){
+            const [requestId,] = event.target.value.split("--")
+            const requests = getRequests()
+            for (const request of requests){
+                if (request.id === parseInt(requestId)) {
+                    request.complete = true
+                    updateRequest(request)}}
+                }
+            })

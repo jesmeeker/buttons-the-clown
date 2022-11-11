@@ -40,6 +40,21 @@ export const sendRequest = (userServiceRequest) => {
 })
 }
 
+export const updateRequest = entry => {
+    return fetch(`${API}/requests/${entry.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(entry)
+    })
+    .then(
+        () => {
+            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+    )
+  };
+
 //When you use the DELETE method on an HTTP request, you must identify a single resource.
 //You can't delete an entire collection with a single HTTP request.
 //Therefore, the function whose responsiblity it is to initiate the fetch request for DELETE must have the primary key sent to it as an argument.

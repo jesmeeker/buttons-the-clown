@@ -48,6 +48,16 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 
+.requests__completed { 
+	border: 1px dotted black;
+	background-color:rgb(255, 253, 221);
+	display: flex;
+	height: 1.5rem;
+	width: 500px;
+	margin: .5rem;
+	padding: .5rem;
+}
+
 .request__description {
 	justify-content: center;
 	width: 400px;
